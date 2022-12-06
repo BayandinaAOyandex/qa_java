@@ -22,7 +22,7 @@ public class FelineTest extends TestCase {
     public void testEatMeat() throws Exception {
         when(feline.eatMeat()).thenReturn(List.of("Животные, Птицы, Рыба"));
         var feline = new Feline();
-        assertEquals("Животные, Птицы, Рыба", feline.eatMeat());
+        assertEquals("Животные, Птицы, Рыба", String.join(", ",feline.eatMeat()));
 
     }
 
