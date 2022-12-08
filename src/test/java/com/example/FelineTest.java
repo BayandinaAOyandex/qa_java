@@ -16,11 +16,11 @@ import static org.mockito.Mockito.when;
 public class FelineTest extends TestCase {
 
 
-    @Mock Feline feline;
+     Feline feline = new Feline();
 
     @Test
     public void testEatMeat() throws Exception {
-        when(feline.eatMeat()).thenReturn(List.of("Животные, Птицы, Рыба"));
+        feline.eatMeat();
         var feline = new Feline();
         assertEquals("Животные, Птицы, Рыба", String.join(", ",feline.eatMeat()));//добавила объединение элементов
 
@@ -36,7 +36,7 @@ public class FelineTest extends TestCase {
 @Test
     public void testGetKittens() {
 
-        when(feline.getKittens()).thenReturn(1);
+        feline.getKittens();
         var feline = new Feline();
         assertEquals(1, feline.getKittens());
     }
