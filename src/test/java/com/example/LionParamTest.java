@@ -37,24 +37,17 @@ public class LionParamTest {
 
     @Parameterized.Parameters
 
-    public static Object[][] getSex() {
-        return new Object[][]{
+    public static Object[][] getMane() {
+        return new Object[][] {
                 {"Самец", true},
-                {"Самка", true}
+                {"Самка", false},
         };
     }
 
     @Test
-    public void getKittens() throws Exception {
-        when(feline.getKittens()).thenReturn(1);
-        Lion lion = new Lion(sex, feline);
-        assertEquals(1, lion.getKittens());
-    }
-
-    @Test
     public void doesHaveMane() throws Exception {
-        var lion = new Lion("Самец", feline);
-        assertEquals(true, lion.doesHaveMane());
+        Lion lion = new Lion(sex,feline);
+        assertEquals(expected, lion.doesHaveMane());
     }
 
     @Test
@@ -62,5 +55,12 @@ public class LionParamTest {
         when(feline.getFood("Хищник")).thenReturn(List.of("one", "two"));
         var lion = new Lion(sex, feline);
         assertEquals((List.of("one", "two")), lion.getFood());
+    }
+
+    @Test
+    public void getKittens() throws Exception {
+        when(feline.getKittens()).thenReturn(1);
+        Lion lion = new Lion(sex, feline);
+        assertEquals(1, lion.getKittens());
     }
 }
